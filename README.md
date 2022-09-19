@@ -35,7 +35,15 @@ If QoS profile matches for both publisher and subscriber, the messages will star
         - `Duration`: duration.
     - Compatibility: Offered duration >= Requested duration
     - Example: Estimate pose when moving.
-- 
+- Deadline: How often must I send messages? (minimum frequency). If it is being trigger both the subscriber and publisher will get an event callback.
+    - Legal Values:
+        - `Period`: duration.
+    - Compatibility: Offered duration <= Requested duration
+    - Callbacks:
+        - Publisher - OfferedDeadlineMissed
+        - Subscription - RequestedDeadlineMissed
+    - Example: `/cmd_vel` safety watchdog.
+
 
 ![image](resources/qos_history.png)
 ![image](resources/qos_durability.png)
