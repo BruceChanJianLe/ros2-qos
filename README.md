@@ -12,7 +12,23 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 
 ## Types of QoS Policies
 
-- History: How many messages to keep locally, similar to ROS1 "queue_size".
-    - Legal Values: KEEP_ALL,  KEEP_LAST + depth
-    - Example: Image processing queue
-    - Compatibility: N/A - does not apply to matching
+- History: How many messages to keep locally? Similar to ROS1 "queue_size".
+    - Legal Values:
+        - `KEEP_ALL`:
+        - `KEEP_LAST + depth`:
+    - Compatibility: N/A - does not apply to matching.
+    - Example: Image processing queue.
+- Durability: Should publishers provide old messages? Similar to ROS1 "latching".
+    - Legal Values:
+        - `VOLATILE`: Late joining subscriptions receive nothing.
+        - `TRANSIENT_LOCAL`: Publisher provide old messages.
+    - Compatibility: `TRANSIENT_LOCAL` > `VOLATILE`
+    - Example: Latest mission state machine.
+- Reliability: Do messages have to be deliver/received?
+    - Legal Values:
+        - `BEST_EFFORT`: No delivery guarantee.
+        - `RELIABLE`: Guarantee delivery*
+    - Compatibility: `RELIABLE` > `BEST_EFFORT`
+    - Example: Visualizer for human dosen't need retry; safety critical update must get through.
+
+![image](resources/qos_history.png)
