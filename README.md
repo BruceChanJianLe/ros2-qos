@@ -30,5 +30,20 @@ If QoS profile matches for both publisher and subscriber, the messages will star
         - `RELIABLE`: Guarantee delivery*
     - Compatibility: `RELIABLE` > `BEST_EFFORT`
     - Example: Visualizer for human dosen't need retry; safety critical update must get through.
+- Lifespan: How long before an un-sent/un-consume message is not useful anymore?
+    - Legal Values:
+        - `Duration`: duration.
+    - Compatibility: Offered duration >= Requested duration
+    - Example: Estimate pose when moving.
+- 
 
 ![image](resources/qos_history.png)
+![image](resources/qos_durability.png)
+![image](resources/qos_reliability.png)
+
+
+## New Concepts
+
+- Some QoS policies generate `events`.
+- Subscription already had `message callback` and now there is a `QoS Event callback`.
+- Publishers get them too!
