@@ -43,11 +43,14 @@ If QoS profile matches for both publisher and subscriber, the messages will star
         - Publisher - OfferedDeadlineMissed
         - Subscription - RequestedDeadlineMissed
     - Example: `/cmd_vel` safety watchdog.
+- Liveliness
 
 
 ![image](resources/qos_history.png)
 ![image](resources/qos_durability.png)
 ![image](resources/qos_reliability.png)
+![image](resources/qos_lifespan.png)
+![image](resources/qos_deadline.png)
 
 
 ## New Concepts
