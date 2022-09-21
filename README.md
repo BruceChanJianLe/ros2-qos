@@ -72,3 +72,9 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 - Some QoS policies generate `events`.
 - Subscription already had `message callback` and now there is a `QoS Event callback`.
 - Publishers get them too!
+
+## Reference
+- [ros2_documentation_qos](https://docs.ros.org/en/foxy/Concepts/About-Quality-of-Service-Settings.html)
+- [roscon_qos](https://vimeo.com/379127762)
+- [design_principle_of_qos](http://design.ros2.org/articles/qos_configurability.html)
+- [example_of_qos](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html)
