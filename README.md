@@ -43,7 +43,19 @@ If QoS profile matches for both publisher and subscriber, the messages will star
         - Publisher - OfferedDeadlineMissed
         - Subscription - RequestedDeadlineMissed
     - Example: `/cmd_vel` safety watchdog.
-- Liveliness
+- Liveliness: What type of heartbeat to I need to give to prove I'm not dead?
+    - Legal Values:
+        - Kind
+            - `AUTOMATIC`
+            - `MANUAL_BY_TOPIC`
+            - `MANUAL_BY_NODE`
+        - Lease Duration: duration
+    - Compatibility
+        - `MANUAL_BY_TOPIC` > `MANUAL_BY_NODE` > `AUTOMATIC`
+        - Offered lease duration <= Requested lease Duration
+    - Callbacks:
+        - Publisher - LivelinessLost
+        - Subscription - LivelinessChanged
 
 
 ![image](resources/qos_history.png)
@@ -51,6 +63,8 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 ![image](resources/qos_reliability.png)
 ![image](resources/qos_lifespan.png)
 ![image](resources/qos_deadline.png)
+![image](resources/qos_liveliness1.png)
+![image](resources/qos_liveliness2.png)
 
 
 ## New Concepts
