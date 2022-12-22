@@ -66,6 +66,15 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 ![image](resources/qos_liveliness1.png)
 ![image](resources/qos_liveliness2.png)
 
+## Examples
+
+For Transient Local to work, both publisher and subscriber must be exactly the same, if not it will not work.
+
+```bash
+# For example
+ros2 topic echo --qos-durability transient_local --qos-reliability reliable /tl_topic
+```
+
 
 ## New Concepts
 
