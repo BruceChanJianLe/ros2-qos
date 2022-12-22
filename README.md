@@ -77,4 +77,5 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 - [ros2_documentation_qos](https://docs.ros.org/en/foxy/Concepts/About-Quality-of-Service-Settings.html)
 - [roscon_qos](https://vimeo.com/379127762)
 - [design_principle_of_qos](http://design.ros2.org/articles/qos_configurability.html)
-- [example_of_qos](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html)
+- [example_of_qos](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html) [example_of_qos2](https://hackmd.io/@st9540808/r1zrNKBWU/%2F%401IzBzEXXRsmj6-nLXZ9opw%2FBkaxoWRiI)
+- [dds_and_qos](https://www.youtube.com/watch?v=WajZmurQYMc)
