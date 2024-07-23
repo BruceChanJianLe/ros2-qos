@@ -93,6 +93,18 @@ If QoS profile matches for both publisher and subscriber, the messages will star
 
 For Transient Local to work, both publisher and subscriber must be exactly the same, if not it will not work.
 
+For watchdog, please provide a little leeway (odom_period + lease_delta).
+
+```bash
+# for odom watchdog
+ros2 run ros2-qos example_watchdog_node
+```
+
+```bash
+# for odom publisher
+ros2 run ros2-qos example_odom_publisher_node
+```
+
 ```bash
 # For example
 ros2 topic echo --qos-durability transient_local --qos-reliability reliable /tl_topic
