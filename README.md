@@ -5,6 +5,7 @@ This repository demonstrates the usage of ROS2 quality of service (QoS). It is a
 ## Important Notes
 
 When to use default DDS: `default`, `services`, `parameters`
+
 When **NOT** to use default DDS: `low latency, high density data`, `high frequency data`, `critical data`
 
 ## Debugging Tips
