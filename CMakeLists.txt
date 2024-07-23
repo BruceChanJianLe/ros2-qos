@@ -6,40 +6,47 @@ if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++20
+# Default to C++17/20
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 20)
+  if("$ENV{ROS_DISTRO}" STREQUAL "foxy" OR "$ENV{ROS_DISTRO}" STREQUAL "galactic")
+    set(CMAKE_CXX_STANDARD 17)
+  else()
+    set(CMAKE_CXX_STANDARD 20)
+  endif()
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
+set(dependencies
+  rclcpp
+  std_msgs
+  rclcpp_lifecycle
+)
+
+foreach(pkg IN LISTS dependencies)
+  find_package(${pkg} REQUIRED)
+endforeach()
 
 # BUILD
 # Example History
-add_executable(history_qos_node
-  src/history_qos_node.cpp
-)
-ament_target_dependencies(history_qos_node rclcpp std_msgs)
-
-install(TARGETS
-  history_qos_node
-  DESTINATION lib/${PROJECT_NAME}
-)
+# add_executable(history_qos_node
+#   src/history_qos_node.cpp
+# )
+# ament_target_dependencies(history_qos_node rclcpp std_msgs)
+#
+# install(TARGETS
+#   history_qos_node
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 # Example Transient Local Pub
 add_executable(transient_local_pub
   src/transient_local_pub.cpp
 )
-ament_target_dependencies(transient_local_pub rclcpp std_msgs)
+ament_target_dependencies(transient_local_pub ${dependencies})
 
 install(TARGETS
   transient_local_pub
@@ -50,10 +57,32 @@ install(TARGETS
 add_executable(transient_local_sub
   src/transient_local_sub.cpp
 )
-ament_target_dependencies(transient_local_sub rclcpp std_msgs)
+ament_target_dependencies(transient_local_sub ${dependencies})
 
 install(TARGETS
   transient_local_sub
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Example Watchdog Node
+add_executable(example_watchdog_node
+  ./src/example_watchdog.cpp
+)
+ament_target_dependencies(example_watchdog_node ${dependencies})
+
+install(TARGETS
+  example_watchdog_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Example odom publisher
+add_executable(example_odom_publisher_node
+  ./src/example_odom_publisher.cpp
+)
+ament_target_dependencies(example_odom_publisher_node ${dependencies})
+
+install(TARGETS
+  example_odom_publisher_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
