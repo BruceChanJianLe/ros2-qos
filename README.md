@@ -2,6 +2,28 @@
 
 This repository demonstrates the usage of ROS2 quality of service (QoS). It is an advanced behavior of publish and subscribe (pub/sub) communications.
 
+## Important Notes
+
+When to use default DDS: `default`, `services`, `parameters`
+When **NOT** to use default DDS: `low latency, high density data`, `high frequency data`, `critical data`
+
+## Debugging Tips
+
+```bash
+# Check for QoS mismatches
+ros2 doctor -rf
+# Inspect QoS settings
+ros2 topic info ... -v
+```
+
+Turning up logging in DDS config
+```xml
+<Tracking>
+    <Verbosity>config</Verbosity>
+    <Outputfile>stdout</Outputfile>
+</Tracking>
+```
+
 ![image](resources/qos1.png)
 
 QoS is a DDS concepts which has been formalized into ROS2. Additionally, non-DDS RMWs can choose to provide QoS.
@@ -88,3 +110,4 @@ ros2 topic echo --qos-durability transient_local --qos-reliability reliable /tl_
 - [design_principle_of_qos](http://design.ros2.org/articles/qos_configurability.html)
 - [example_of_qos](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html) [example_of_qos2](https://hackmd.io/@st9540808/r1zrNKBWU/%2F%401IzBzEXXRsmj6-nLXZ9opw%2FBkaxoWRiI)
 - [dds_and_qos](https://www.youtube.com/watch?v=WajZmurQYMc)
+- [qos_talk](https://www.youtube.com/watch?v=WajZmurQYMc)
