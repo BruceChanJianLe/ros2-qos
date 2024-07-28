@@ -124,3 +124,4 @@ ros2 topic echo --qos-durability transient_local --qos-reliability reliable /tl_
 - [example_of_qos](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html) [example_of_qos2](https://hackmd.io/@st9540808/r1zrNKBWU/%2F%401IzBzEXXRsmj6-nLXZ9opw%2FBkaxoWRiI)
 - [dds_and_qos](https://www.youtube.com/watch?v=WajZmurQYMc)
 - [qos_talk](https://www.youtube.com/watch?v=WajZmurQYMc)
+- [watchdog_reference](https://github.com/ros-safety/software_watchdogs)
